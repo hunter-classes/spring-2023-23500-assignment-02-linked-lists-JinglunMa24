@@ -12,7 +12,7 @@ List::~List() {
         head = head->getNext();
         delete walker;
     }
-    delete head;
+    std::cout << "deleted" << '\n';
 }
 
 void List::insert(std::string data) {
@@ -48,6 +48,18 @@ void List::insert(int loc, std::string data) {
         newNode->setNext(walker);
         trailer->setNext(newNode);
     }
+}
+
+bool List::contains(std::string item) {
+    Node *walker = head;
+
+    while (walker != nullptr) {
+        if (walker->getData() == item) {
+            return true;
+        }
+        walker = walker->getNext();
+    }
+    return false;
 }
 
 
